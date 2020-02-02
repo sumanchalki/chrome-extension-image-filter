@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Set Page Color Popup</title>
     <style>
-      button {
-        height: 30px;
-        width: 30px;
-        outline: none;
+      body {
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+        background: white;
+      }
+
+      div:first-child {
+        margin-top: 0px;
+      }
+
+      div {
+        cursor: pointer;
+        text-align: center;
+        padding: 5px 5px 5px 12px;
+        width: 100px;
+        margin-top: 1px;
+        background: #cccccc;
+      }
+      div:hover {
+        background: #aaaaaa;
+      }
+      #apply {
+        background: 5% center / 15% no-repeat
+          url('chrome-extension://pdbmbicmpkjlbgilkobfamogocoiamah/images/effect-icon.svg');
+        font-family: fantasy, 'Lucida Sans', Arial, sans-serif;
+        color: #bc0090;
+        font-size: 1.3em;
+        font-weight: 300;
       }
     </style>
+    <script src="popup.js"></script>
   </head>
   <body>
-    <button id="changeColor"></button>
-    <script src="popup.js"></script>
+    <div id="apply">Apply Filter</div>
   </body>
 </html>

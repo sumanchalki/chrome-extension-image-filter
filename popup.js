@@ -1,17 +1,13 @@
-'use strict';
-
-let changeColor = document.getElementById('changeColor');
-
-chrome.storage.sync.get('color', function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
-
-changeColor.onclick = function(element) {
-  let color = element.target.value;
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    chrome.tabs.executeScript(tabs[0].id, {
-      code: 'document.body.style.backgroundColor = "' + color + '";'
-    });
+function sendApplyFilter() {
+  chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
+    var activeTab = tabs[0];
+    var aa = chrome.tabs.sendMessage(activeTab.id, { message: 'start' });
   });
-};
+}
+
+(function() {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#apply').addEventListener('click', sendApplyFilter);
+    document.querySelector('#undo').addEventListener('click', sendApplyFilter);
+  });
+})();

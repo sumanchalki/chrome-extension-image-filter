@@ -1,0 +1,52 @@
+div.grainy-image9876543210 {
+  clip-path: inset(0px 0px);
+  background-repeat: no-repeat;
+}
+
+div.grainy-image9876543210:after {
+  animation: grain8343423 8s steps(10) infinite;
+  background-image: url('chrome-extension://pdbmbicmpkjlbgilkobfamogocoiamah/images/background.jpg');
+  content: '';
+  height: 300%;
+  left: -50%;
+  opacity: 0.3;
+  position: fixed;
+  top: -50%;
+  width: 300%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+@keyframes grain8343423 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -15%);
+  }
+  20% {
+    transform: translate(-10%, 0%);
+  }
+  30% {
+    transform: translate(7%, -7%);
+  }
+  40% {
+    transform: translate(-5%, 8%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(10%, 0%);
+  }
+  70% {
+    transform: translate(0%, 7%);
+  }
+  80% {
+    transform: translate(3%, 15%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
