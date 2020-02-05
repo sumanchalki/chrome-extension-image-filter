@@ -5,7 +5,7 @@ div.grainy-image9876543210 {
 
 div.grainy-image9876543210:after {
   animation: grain8343423 8s steps(10) infinite;
-  background-image: url('chrome-extension://pdbmbicmpkjlbgilkobfamogocoiamah/images/background.jpg');
+  background-image: url('chrome-extension://jikclhiolndnkgomeopaplkllokgdldm/images/background.jpg');
   content: '';
   height: 300%;
   left: -50%;
