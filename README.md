@@ -1,6 +1,6 @@
 # Chrome Extension - Image Filter
 
-A Chrome Extension to apply funny image filter on images of current page.
+A Chrome Extension to add dynamic noise filter on images of current page.
 
 Get it on the Chrome Web Store at https://chrome.google.com/webstore/detail/jikclhiolndnkgomeopaplkllokgdldm
 

@@ -1,13 +1,17 @@
-function sendApplyFilter() {
+function applyUndoFilter(action) {
   chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-    var activeTab = tabs[0];
-    var aa = chrome.tabs.sendMessage(activeTab.id, { message: 'start' });
+    const activeTab = tabs[0];
+    chrome.tabs.sendMessage(activeTab.id, { action });
   });
 }
 
 (function() {
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#apply').addEventListener('click', sendApplyFilter);
-    document.querySelector('#undo').addEventListener('click', sendApplyFilter);
+    document
+      .querySelector('#apply')
+      .addEventListener('click', applyUndoFilter.bind(null, 'apply'));
+    document
+      .querySelector('#undo')
+      .addEventListener('click', applyUndoFilter.bind(null, 'undo'));
   });
 })();

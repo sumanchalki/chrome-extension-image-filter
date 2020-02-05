@@ -3,7 +3,8 @@ function transform() {
   for (let item of allImages) {
     let imgWidth = item.width;
     let imgHeight = item.height;
-    if (imgWidth < 100 && imgHeight < 100) {
+    // Skip smaller images.
+    if ((imgWidth < 100 && imgHeight < 100) || item.src === '') {
       continue;
     }
     let imgSrc = item.src;
@@ -23,6 +24,32 @@ function transform() {
   }
 }
 
+function undo() {
+  const allImageDivs = document.querySelectorAll('div.grainy-image9876543210');
+  for (let imgDiv of allImageDivs) {
+    // For blank values skip.
+    if (imgDiv.style.backgroundImage.match(/^url\(['"]?['"]?\)$/)) {
+      continue;
+    }
+    let imgElem = imgDiv.getElementsByTagName('img').item(0);
+
+    let imgSrc = imgDiv.style.backgroundImage.replace(/(^url\(")|("\)$)/gi, '');
+    if (imgSrc.match(/^data\:/)) {
+      continue;
+    }
+    imgElem.src = imgSrc;
+
+    imgDiv.parentNode.insertBefore(imgElem, imgDiv);
+    imgDiv.remove();
+  }
+}
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  transform();
+  if (request.action) {
+    if (request.action === 'apply') {
+      transform();
+    } else if (request.action === 'undo') {
+      undo();
+    }
+  }
 });
